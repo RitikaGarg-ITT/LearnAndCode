@@ -17,18 +17,18 @@ interface Entity {
 interface CarbonFootprint {
   emailId: string;
   source: string;
-  inbox: string;
-  sent: string;
-  spam: string;
+  carbonReleasedFromInboxMails: string;
+  carbonReleasedFromSentMails: string;
+  carbonReleasedFromSpamMails: string;
 }
 
 function getCarbonFootprint(entityType: string[], entity: Entity): CarbonFootprint {
   const carbonFootprint: CarbonFootprint = {
     emailId: entity.email,
     source: "gmail",
-    inbox: (emailData.inbox * CO2_EMISSIONS.inbox).toFixed(2) + " KG",
-    sent: (emailData.sent * CO2_EMISSIONS.sent).toFixed(2) + " KG",
-    spam: (emailData.spam * CO2_EMISSIONS.spam).toFixed(2) + " KG",
+    carbonReleasedFromInboxMails: (emailData.inbox * CO2_EMISSIONS.inbox).toFixed(2) + " KG",
+    carbonReleasedFromSentMails: (emailData.sent * CO2_EMISSIONS.sent).toFixed(2) + " KG",
+    carbonReleasedFromSpamMails: (emailData.spam * CO2_EMISSIONS.spam).toFixed(2) + " KG",
   };
   return carbonFootprint;
 }
