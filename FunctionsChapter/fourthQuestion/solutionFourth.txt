@@ -1,0 +1,50 @@
+class Book {
+    private $title;
+    private $author;
+    private $currentPage = 1;
+
+    public function __construct($title, $author) {
+        $this->title = $title;
+        $this->author = $author;
+    }
+
+    public function getTitle() {
+        return $this->title;
+    }
+
+    public function getAuthor() {
+        return $this->author;
+    }
+
+    public function turnPage() {
+        $this->currentPage++;
+    }
+
+    public function getCurrentPage() {
+        return "Page " . $this->currentPage . " content";
+    }
+}
+
+class BookSaver {
+    public function save(Book $book) {
+        $filename = '/documents/' . $book->getTitle() . ' - ' . $book->getAuthor() . '.txt';
+        file_put_contents($filename, serialize($book));
+    }
+}
+
+interface Printer {
+    function printPage($page);
+}
+
+class PlainTextPrinter implements Printer {
+    function printPage($page) {
+        echo $page;
+    }
+}
+
+class HtmlPrinter implements Printer {
+    function printPage($page) {
+        echo '<div style="single-page">' . $page . '</div>';
+    }
+}
+
