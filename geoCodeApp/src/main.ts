@@ -1,25 +1,24 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import { GeocodeService } from "./services/geocodeService";
-import * as readline from "readline";
+import { getUserInput } from "./inputs/inputHanlder";
+import { displayCoordinates, displayError, displayNotFound } from "./Display/displayCoordinates";
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
+async function main() {
+  const place = await getUserInput("Enter a place: ");
+  const geocodeService = new GeocodeService();
 
-const geocodeService = new GeocodeService();
-
-rl.question("Enter a place: ", async (place: string) => {
   try {
     const coordinates = await geocodeService.getCoordinates(place);
     if (coordinates) {
-      console.log(`Latitude: ${coordinates.lat}`);
-      console.log(`Longitude: ${coordinates.lon}`);
+      displayCoordinates(coordinates.lat, coordinates.lon);
     } else {
-      console.log("Location not found.");
+      displayNotFound();
     }
-  } catch (error) {
-    console.error("An error occurred:", error.message);
-  } finally {
-    rl.close();
+  } catch (error: any) {
+    displayError(error.message);
   }
-});
+}
+
+main();
