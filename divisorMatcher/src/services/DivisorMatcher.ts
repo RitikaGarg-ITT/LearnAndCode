@@ -7,14 +7,20 @@ export class DivisorMatcher {
     this.numberService = numberService;
   }
 
-  findMatchingCount(n: number): number {
-    let count = 0;
-    for (let x = 1; x < n; x++) {
-      const y = n - x;
-      if (this.numberService.countDivisors(x) === this.numberService.countDivisors(y)) {
-        count++;
+  findMatchingDivisorPairCount(totalSum: number): number {
+    let matchingPairCount = 0;
+
+    for (let firstNumber = 1; firstNumber < totalSum; firstNumber++) {
+      const secondNumber = totalSum - firstNumber;
+
+      const firstDivisorCount = this.numberService.countDivisors(firstNumber);
+      const secondDivisorCount = this.numberService.countDivisors(secondNumber);
+
+      if (firstDivisorCount === secondDivisorCount) {
+        matchingPairCount++;
       }
     }
-    return count;
+
+    return matchingPairCount;
   }
 }
