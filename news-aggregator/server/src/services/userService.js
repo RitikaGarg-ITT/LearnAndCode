@@ -3,7 +3,6 @@ const bcrypt = require("bcryptjs");
 const userRepo = require("../repositories/userRepository");
 
 const signup = async ({ firstname, lastname, email, password, role }) => {
-    console.log(" 4 signup vali service");
 
   const existingUser = await userRepo.findByEmail(email);
   if (existingUser) throw new Error("Email already registered");
@@ -13,7 +12,6 @@ const signup = async ({ firstname, lastname, email, password, role }) => {
 };
 
 const login = async ({ email, password }) => {
-    console.log(" 4 login vali service");
 
   const user = await userRepo.findByEmail(email);
   if (!user) throw new Error("User not found");

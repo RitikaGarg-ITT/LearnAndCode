@@ -8,7 +8,6 @@ require("dotenv").config();
 const app = express();
 app.use(bodyParser.json());
 app.use("/api/users", userRoutes);
-console.log(" 1 hi from app.js");
 app.use("/api/news", newsRoutes);
 // startNewsFetcher(); // Start scheduled job
 

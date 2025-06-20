@@ -2,7 +2,6 @@
 const db = require("../config/db");
 
 const createUser = async (user) => {
-    console.log(" 5 repo ki vjh se dimag khrb hora");
 
   const [result] = await db.query("INSERT INTO USERS (firstname, lastname, email, password, role) VALUES (?, ?, ?, ?, ?)", [
       user.firstname,

@@ -3,7 +3,6 @@ const userService = require("../services/userService");
 
 const signup = async (req, res) => {
   try {
-    console.log(" 3 controller ki vajah se dimag khrb hora");
     const { firstname, lastname, email, password, role } = req.body;
     if (!firstname || !lastname || !email || !password || !role) {
       return res.status(400).json({ message: "All fields required" });
@@ -18,7 +17,6 @@ const signup = async (req, res) => {
 
 const login = async (req, res) => {
   try {
-    console.log(" 3 hi from controller");
     const { email, password } = req.body;
     if (!email || !password) {
       return res.status(400).json({ message: "Email and password required" });
