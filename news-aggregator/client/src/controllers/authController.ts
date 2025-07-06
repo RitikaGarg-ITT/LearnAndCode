@@ -1,4 +1,3 @@
-// client/src/controllers/authController.ts
 import readlineSync from "readline-sync";
 import { signup, login } from "../api/userApi";
 
@@ -8,11 +7,10 @@ export async function signupFlow() {
   const lastname = readlineSync.question("Last Name: ");
   const email = readlineSync.questionEMail("Email: ");
   const password = readlineSync.question("Password: ", { hideEchoBack: true });
-  const role = readlineSync.keyInSelect(["user", "admin"], "Role: ", { cancel: false }) === 0 ? "user" : "admin";
 
   try {
-    console.log("firstname "+ firstname  , "lastname " + lastname,  "email "+ email, "password "+ password, "role "+ role);
-    const res = await signup({ firstname, lastname, email, password, role });
+    // No role sent here!
+    const res = await signup({ firstname, lastname, email, password });
     console.log(JSON.stringify(res.data.message));
   } catch (err: any) {
     console.log("Signup failed 1:", err);
