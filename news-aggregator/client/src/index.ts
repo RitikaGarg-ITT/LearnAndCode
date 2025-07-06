@@ -1,22 +1,25 @@
-import readlineSync from 'readline-sync';
-import { signupFlow, loginFlow } from './controllers/authController';
+import readlineSync from "readline-sync";
+import { signupFlow, loginFlow } from "./controllers/authController";
+import { userMenuFlow } from "./controllers/userMenuController";
 
 async function mainMenu() {
   while (true) {
-    console.log('\n--- News Aggregator ---');
-    const choice = readlineSync.keyInSelect(['Signup', 'Login', 'Exit'], 'Choose an option:', { cancel: false });
+    console.log("\n--- News Aggregator ---");
+    const choice = readlineSync.keyInSelect(["Signup", "Login", "Exit"], "Choose an option:", { cancel: false });
 
     if (choice === 0) {
       await signupFlow();
     } else if (choice === 1) {
       const user = await loginFlow();
       if (user) {
-        // Proceed to user/admin menu based on user.role
-        console.log(`Welcome, ${user.firstname} (${user.role})!`);
-        // Add further menu logic here
+        if (user.role === "user") {
+          await userMenuFlow(user);
+        } else if (user.role === "admin") {
+          // Implement adminMenuFlow(user);
+        }
       }
     } else {
-      console.log('Goodbye!');
+      console.log("Goodbye!");
       break;
     }
   }
