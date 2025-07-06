@@ -26,7 +26,6 @@ export async function loginFlow() {
   try {
     const res = await login({ email, password });
     console.log(res.data.message);
-    // You can return user info or token here if you want to manage session
     return res.data.user;
   } catch (err: any) {
     console.log("Login failed:", err.response?.data?.message || err.message);
