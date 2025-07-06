@@ -1,6 +1,6 @@
-const db = require("../config/db");
+import db from "../config/db";
 
-async function createTables() {
+async function createTables(): Promise<void> {
   try {
     await db.query(`
       CREATE TABLE IF NOT EXISTS USERS (
@@ -93,7 +93,7 @@ async function createTables() {
 
     console.log("All tables created successfully!");
     process.exit(0);
-  } catch (err) {
+  } catch (err: any) {
     console.error("Error creating tables:", err);
     process.exit(1);
   }
