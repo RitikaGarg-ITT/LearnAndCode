@@ -1,4 +1,5 @@
 import db from "../config/db";
+import { Article } from "../models/articles";
 import { Headline } from "../models/headline";
 
 class HeadlineRepository {
@@ -31,6 +32,20 @@ class HeadlineRepository {
 
     const [rows] = await db.query(query, params);
     return rows as Headline[];
+  }
+  async searchHeadlines(query: string, startDate?: string, endDate?: string): Promise<Article[]> {
+    let sql = `
+      SELECT * FROM articles
+      WHERE (title LIKE ? OR description LIKE ?)
+    `;
+    const params: any[] = [`%${query}%`, `%${query}%`];
+    if (startDate && endDate) {
+      sql += " AND DATE(published_at) BETWEEN ? AND ?";
+      params.push(startDate, endDate);
+    }
+    sql += " ORDER BY likes DESC, dislikes ASC, published_at DESC";
+    const [rows] = await db.query(sql, params);
+    return rows as Article[];
   }
 }
 

@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import headlineService from "../services/headlineService";
+import { Article } from "../models/articles";
 
 class HeadlineController {
   public static async getTodayHeadlines(req: Request, res: Response): Promise<void> {
@@ -40,6 +41,21 @@ class HeadlineController {
         category as string | undefined
       );
       res.status(200).json({ headlines });
+    } catch (err: any) {
+      res.status(500).json({ message: err.message });
+    }
+  }
+  // GET /api/headlines/search?query=tesla&startDate=2025-07-01&endDate=2025-07-07
+  static async searchHeadlines(req: Request, res: Response) :Promise<void> {
+    try {
+      const { query, startDate, endDate } = req.query;
+  
+      const headlines = await headlineService.searchHeadlines(
+        query as string,
+        startDate as string | undefined,
+        endDate as string | undefined
+      );
+      res.status(200).json({ headlines: headlines as Article[] });
     } catch (err: any) {
       res.status(500).json({ message: err.message });
     }

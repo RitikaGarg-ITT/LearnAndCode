@@ -1,6 +1,7 @@
 import headlineRepository from "../repositories/headlinerepository";
 import { Headline } from "../models/headline";
 
+
 class HeadlineService {
   public async getTodayHeadlines(): Promise<Headline[]> {
     const today = new Date().toISOString().split("T")[0];
@@ -13,6 +14,9 @@ class HeadlineService {
 
   public async getHeadlinesByFilter(startDate: string, endDate: string, category?: string): Promise<Headline[]> {
     return await headlineRepository.getHeadlinesByFilter(startDate, endDate, category);
+  }
+  async searchHeadlines(query: string, startDate?: string, endDate?: string) {
+    return await headlineRepository.searchHeadlines(query, startDate, endDate);
   }
 }
 
