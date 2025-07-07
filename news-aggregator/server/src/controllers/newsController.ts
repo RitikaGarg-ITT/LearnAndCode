@@ -1,4 +1,3 @@
-// import { Request, Response } from "express";
 import newsService from "../services/newsService";
 
 class NewsController {
