@@ -38,6 +38,8 @@ export async function fetchHeadlines(params: { startDate: string; endDate: strin
     console.log("Error in fetchHeadlines:", err.message, err.code, err.response?.data);
     throw new Error(err.response?.data?.message || err.message || "Unknown error fetching headlines");
   }
+
+
 }
 
 // Fetch a single headline/article by ID
@@ -50,3 +52,12 @@ export async function fetchHeadlineById(id: number) {
     throw new Error(err.response?.data?.message || err.message || "Unknown error fetching headline by ID");
   }
 }
+
+export async function searchHeadlines(query: string, startDate?: string, endDate?: string) {
+  let url = `http://localhost:4000/api/headlines/search?query=${encodeURIComponent(query)}`;
+  if (startDate && endDate) {
+    url += `&startDate=${startDate}&endDate=${endDate}`;
+  }
+  return axios.get(url);
+}
+
