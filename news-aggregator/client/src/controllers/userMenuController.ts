@@ -1,6 +1,7 @@
 import readlineSync from "readline-sync";
 import { showUserMenu } from "../views/userMenuView";
 import { headlinesMenuFlow } from "./headlineController";
+import { savedArticlesMenuFlow } from "./savedArticleController";
 
 export async function userMenuFlow(user: any) {
   while (true) {
@@ -8,10 +9,10 @@ export async function userMenuFlow(user: any) {
     const choice = readlineSync.question("Enter your choice: ");
     switch (choice) {
       case "1":
-       await headlinesMenuFlow();
+        await headlinesMenuFlow();
         break;
       case "2":
-        // Implement showSavedArticlesMenu(user);
+        // savedArticlesMenuFlow(user);
         break;
       case "3":
         // Implement showSearchMenu(user);
