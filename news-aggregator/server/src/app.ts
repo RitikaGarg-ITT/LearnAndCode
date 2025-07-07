@@ -14,6 +14,7 @@ dotenv.config();
 const app: Application = express();
 
 
+import userKeywordRoutes from "./routes/userKeywordRoutes";
 
 app.use(bodyParser.json());
 app.use("/api/users", userRoutes);
@@ -21,6 +22,7 @@ app.use("/api/news", newsRoutes);
 app.use("/api/headlines", headlineRoutes);
 app.use("/api/saved-articles", savedArticleRoutes);
 app.use("/api/categories", categoryRoutes);
+app.use("/api/user-keywords", userKeywordRoutes);
 
 // Start scheduled jobs
 NewsFetcherScheduler.start();
