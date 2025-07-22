@@ -34,7 +34,6 @@ class HeadlineController {
         return;
       }
 
-      // Call your service/repository to fetch headlines by date range and category
       const headlines = await headlineService.getHeadlinesByFilter(
         startDate as string,
         endDate as string,
@@ -45,7 +44,6 @@ class HeadlineController {
       res.status(500).json({ message: err.message });
     }
   }
-  // GET /api/headlines/search?query=tesla&startDate=2025-07-01&endDate=2025-07-07
   static async searchHeadlines(req: Request, res: Response) :Promise<void> {
     try {
       const { query, startDate, endDate } = req.query;

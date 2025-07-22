@@ -3,12 +3,10 @@ import db from "../config/db";
 import { SavedArticle } from "../models/savedArticle";
 
 class SavedArticleRepo {
-  // Save article for user
   async saveArticle(userId: number, articleId: number): Promise<void> {
     await db.query("INSERT INTO saved_articles (user_id, article_id) VALUES (?, ?)", [userId, articleId]);
   }
 
-  // Check if already saved
   async isArticleSaved(userId: number, articleId: number): Promise<boolean> {
     const [rows] = await db.query("SELECT saved_article_id FROM saved_articles WHERE user_id = ? AND article_id = ?", [
       userId,
@@ -17,7 +15,6 @@ class SavedArticleRepo {
     return Array.isArray(rows) && rows.length > 0;
   }
 
-  // Get all saved articles for user (join to get article details)
   async getSavedArticles(userId: number): Promise<SavedArticle[]> {
     const [rows] = await db.query(
       `SELECT sa.saved_article_id as saved_id, a.*
@@ -29,9 +26,16 @@ class SavedArticleRepo {
     return rows as SavedArticle[];
   }
 
-  // Delete a saved article by its saved_article id
   async deleteSavedArticle(savedArticleId: number): Promise<void> {
     await db.query("DELETE FROM saved_articles WHERE saved_article_id = ?", [savedArticleId]);
+  }
+
+  async findByUserAndArticle(userId: number, articleId: number) {
+    const [rows] = await db.query(`SELECT * FROM saved_articles WHERE user_id = ? AND article_id = ?`, [
+      userId,
+      articleId,
+    ]);
+    return (rows as any[])[0] || null;
   }
 }
 

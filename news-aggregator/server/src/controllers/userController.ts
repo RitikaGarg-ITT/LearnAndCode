@@ -1,8 +1,8 @@
 import userService from "../services/userService";
 import { Request, Response } from "express";
+import logger from "../utils/logger";
 
 class UserController {
-  // Signup endpoint
   public static async signup(req: Request, res: Response): Promise<void> {
     try {
       const { firstname, lastname, email, password } = req.body;
@@ -13,12 +13,11 @@ class UserController {
       const userId = await userService.signup({ firstname, lastname, email, password });
       res.status(201).json({ message: "Signup successful", userId });
     } catch (err: any) {
-      console.error(err);
+      logger.error(err);
       res.status(400).json({ message: err.message });
     }
   }
 
-  // Login endpoint
   public static async login(req: Request, res: Response): Promise<void> {
     try {
       const { email, password } = req.body;

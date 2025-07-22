@@ -22,8 +22,6 @@ export class SearchController {
         allHeadlines.push(...headlines);
       }
 
-      // Optionally remove duplicates here if needed
-
       res.json({ headlines: allHeadlines });
     } catch (err: any) {
       if (err instanceof AppError) {

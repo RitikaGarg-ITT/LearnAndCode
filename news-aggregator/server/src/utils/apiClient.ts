@@ -5,8 +5,7 @@ export interface FetchNewsParams {
 }
 
 export interface NewsApiResponse {
-  articles: any[]; // You can define a more specific type if you know the article structure
-  [key: string]: any;
+  articles: any[];
 }
 
 class ApiClient {

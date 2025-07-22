@@ -4,10 +4,7 @@ import articleRepo from "../repositories/articleRepo";
 import notificationRepo, { NotificationInput } from "../repositories/notificationRepo";
 
 class NotificationService {
-  /**
-   * Generates notifications for all enabled users based on their keywords.
-   * @returns The number of notifications generated.
-   */
+ 
   public static async generateNotifications(): Promise<number> {
     const users: number[] = await configureNotificationRepo.getEnabledUsers();
     let notificationCount = 0;

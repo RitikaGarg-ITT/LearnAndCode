@@ -12,22 +12,18 @@ class UserService {
       lastname,
       email,
       password: hashedPassword,
-      role: "user", // Always assign "user"
+      role: "user", 
     };
     return await userRepo.createUser(user);
   }
 
-  /**
-   * Logs in a user by validating credentials.
-   * @throws Error if user is not found or password is invalid.
-   * @returns The user object.
-   */
+ 
   public static async login({ email, password }: { email: string; password: string }): Promise<User> {
     const user = await userRepo.findByEmail(email);
     if (!user) throw new Error("User not found");
     const valid = await bcrypt.compare(password, user.password);
     if (!valid) throw new Error("Invalid password");
-    return user; // user.role will be "admin" or "user"
+    return user; 
   }
 }
 

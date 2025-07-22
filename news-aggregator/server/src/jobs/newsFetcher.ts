@@ -1,5 +1,6 @@
 import cron from "node-cron";
 import newsService from "../services/newsService";
+import logger from "../utils/logger";
 
 class NewsFetcherScheduler {
   /**
@@ -7,9 +8,9 @@ class NewsFetcherScheduler {
    */
   public static start(): void {
     cron.schedule("0 */3 * * *", async () => {
-      console.log("Starting scheduled news fetch...");
+      logger.info("Starting scheduled news fetch...");
       await newsService.fetchAndStoreNews();
-      console.log("News fetch completed");
+      logger.info("News fetch completed");
     });
   }
 
@@ -17,9 +18,9 @@ class NewsFetcherScheduler {
    * Manually triggers a news fetch (for testing).
    */
   public static async test(): Promise<void> {
-    console.log("Starting scheduled news fetch... Task");
+    logger.info("Starting scheduled news fetch... Task");
     await newsService.fetchAndStoreNews();
-    console.log("News fetch completed");
+    logger.info("News fetch completed");
   }
 }
 

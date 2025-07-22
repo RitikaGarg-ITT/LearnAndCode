@@ -1,6 +1,5 @@
 import db from "../config/db";
 
-// Define the Article type for input
 export interface ArticleInput {
   source_id: number;
   title: string;
@@ -13,10 +12,7 @@ export interface ArticleInput {
 }
 
 class ArticleRepo {
-  /**
-   * Inserts a new article into the database.
-   * @returns The inserted article's ID.
-   */
+
   public static async createArticle(article: ArticleInput): Promise<number> {
     const [result]: any = await db.query(
       `INSERT INTO ARTICLES 
@@ -36,17 +32,13 @@ class ArticleRepo {
     return result.insertId;
   }
 
-  /**
-   * Checks if an article with the given URL exists.
-   */
+
   public static async articleExists(url: string): Promise<boolean> {
     const [rows]: any = await db.query("SELECT 1 FROM ARTICLES WHERE url = ?", [url]);
     return rows.length > 0;
   }
 
-  /**
-   * Searches articles by keywords, excluding those already notified to the user.
-   */
+ 
   public static async searchByKeywords(keywords: string[], userId: number): Promise<any[]> {
     if (keywords.length === 0) return [];
 

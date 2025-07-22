@@ -2,7 +2,7 @@ import extServerRepo, { Server } from "../repositories/extServerRepo";
 import articleRepo, { ArticleInput } from "../repositories/articleRepo";
 import apiClient from "../utils/apiClient";
 import categoryRepo, { Category } from "../repositories/categoryRepo";
-
+import logger from "../utils/logger";
 interface NewsArticle {
   title: string;
   description: string;
@@ -13,9 +13,6 @@ interface NewsArticle {
 }
 
 class NewsService {
-  /**
-   * Fetches news from all active servers and stores new articles in the database.
-   */
   public static async fetchAndStoreNews(): Promise<void> {
     const [activeServers, categories]: [Server[], Category[]] = await Promise.all([
       extServerRepo.getActiveServers(),
@@ -30,8 +27,7 @@ class NewsService {
             country: "us",
             category: category.name,
           };
-
-          // Assuming apiClient.fetchNews returns an array of articles
+          logger.info(`Fetching news from server [${server.name}], category [${category.name}]...`);
           const newsData: NewsArticle[] = await apiClient.fetchNews(server.api_uri, params);
 
           for (const articleData of newsData) {
@@ -49,13 +45,14 @@ class NewsService {
                 published_at: new Date(articleData.publishedAt),
               };
               await articleRepo.createArticle(article);
+              logger.debug(`Saved new article: ${article.title} (${article.url})`);
             }
           }
 
           await extServerRepo.updateLastFetched(server.source_id);
-          console.log(`Fetched ${newsData?.length} articles from ${server.name} [${category.name}]`);
+          logger.info(`Fetched ${newsData?.length} articles from ${server.name} [${category.name}]`);
         } catch (error: any) {
-          console.error(`Error fetching from ${server.name} [${category.name}]:`, error.message);
+          logger.info(`Error fetching from ${server.name} [${category.name}]:`, error.message);
         }
       }
     }
