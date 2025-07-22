@@ -25,24 +25,41 @@ export function showCategoryMenu(categories: string[]) {
 
 // Show a list of headlines
 export function showHeadlinesList(headlines: any[]) {
-  // console.log("Sample headline object:", headlines[0]);
+  if (!headlines.length) {
+    console.log("No headlines to display.");
+    return;
+  }
+  console.log("\nH E A D L I N E S\n");
+  // console.log({headlines});
   headlines.forEach((headline, idx) => {
-    console.log(`${idx + 1}. ${headline.title} `);
+    const articleId = headline.article_id || headline.id || idx + 1;
+    const title = headline.title || "No Title";
+    const description = headline.description || "";
+    const source = headline.source?.name || headline.source || "Unknown";
+    const url = headline.url || "";
+    const category = headline.category || "General";
+    const likes = headline.likes ;
+    const dislikes = headline.dislikes ;
+
+    console.log(`Article Id: ${articleId}`);
+    console.log(`${title}`);
+    if (description) console.log(`${description}`);
+    console.log(`source: ${source}`);
+    if (url) console.log(`URL: ${url}`);
+    console.log(`Business: ${category}`);
+    console.log(`Likes: ${likes}  Dislikes: ${dislikes}`);
+    console.log("------------------------------------------------------------");
   });
-  console.log(`${headlines.length + 1}. Back`);
 }
 
-// Show details for a single headline
+
 export function showHeadlineDetails(headline: any) {
   console.log(`\nTitle: ${headline.title}`);
   console.log(`Description: ${headline.description}`);
-  // console.log(`Source: ${headline.source}`);
   console.log(`Published At: ${headline.published_at}`);
-  // console.log(`Category: ${capitalize(headline.category)}`);
   console.log(`URL: ${headline.url}\n`);
 }
 
-// Helper to capitalize category names
 function capitalize(str: string) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }

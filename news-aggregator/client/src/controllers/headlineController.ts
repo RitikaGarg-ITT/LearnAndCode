@@ -1,53 +1,109 @@
 import readlineSync from "readline-sync";
-import { fetchCategories, fetchHeadlines, fetchHeadlineById } from "../api/headlineApi";
-import { showHeadlinesMainMenu, showCategoryMenu, showHeadlinesList, showHeadlineDetails } from "../views/headlineView";
+import { fetchHeadlines } from "../api/headlineApi";
+import { showHeadlinesMainMenu, showHeadlinesList } from "../views/headlineView";
 import { chooseCategoryMenu } from "./categoryController";
+import { likeArticle, dislikeArticle } from "../api/articleReactionApi";
+import { saveArticle } from "../api/savedArticleApi";
+import { reportArticle } from "../api/articleReportApi";
 
-// Helper: prompt for category and return the selected category or null (for Back)
-
-export async function headlinesMenuFlow(user?: any) {
+export async function headlinesMenuFlow(user: any) {
   while (true) {
     showHeadlinesMainMenu(user);
     const mainChoiceNum = readlineSync.questionInt("Enter your choice: ");
-    if (mainChoiceNum === 3) break; // Back
-    let startDate: string, endDate: string;
+    if (mainChoiceNum === 3) break; // Exit headlines menu
+
+    let startDate, endDate;
     if (mainChoiceNum === 1) {
-      // Today
       const today = new Date().toISOString().slice(0, 10);
       startDate = endDate = today;
     } else if (mainChoiceNum === 2) {
-      // Date range
       startDate = readlineSync.question("Enter start date (YYYY-MM-DD): ");
       endDate = readlineSync.question("Enter end date (YYYY-MM-DD): ");
     } else {
       console.log("Invalid choice. Try again.");
       continue;
     }
-   
-    // Category selection (dynamic)
+
     const category = await chooseCategoryMenu();
-    console.log(" category from menu", category);
-    if (!category) continue; // User chose Back
+    if (!category) continue;
 
     try {
-      const res = await fetchHeadlines({ startDate, endDate, category });
-     
-      const headlines = res.data.headlines|| [];
-      console.log("headlines", headlines.length);
+      let headlinesRes = await fetchHeadlines({ startDate, endDate, category });
+      let headlines = headlinesRes.data.headlines || [];
       if (!headlines.length) {
-        console.log("\n No headlines found for the selected filter.");
+        console.log("\nNo headlines found for the selected filter.");
         continue;
       }
+
+      // --- HEADLINES LIST MENU ---
       while (true) {
         showHeadlinesList(headlines);
-        console.log("testing");
-        const articleChoice = readlineSync.questionInt("Select a headline to view details or Back: ");
-        if (articleChoice === headlines.length + 1) break;
-        if (articleChoice > 0 && articleChoice <= headlines.length) {
-          const headline = headlines[articleChoice - 1];
-          const detailRes = await fetchHeadlineById(headline.article_id);
-          showHeadlineDetails(detailRes.data.headline);
-          readlineSync.question("Press Enter to go back to headlines list...");
+        console.log("1. Back");
+        console.log("2. Logout");
+        console.log("3. Save Article");
+        console.log("4. Like Article");
+        console.log("5. Dislike Article");
+        console.log("6. Report Article");
+        const menuChoice = readlineSync.questionInt("Enter your choice: ");
+
+        if (menuChoice === 1) break; // Back to previous menu
+        if (menuChoice === 2) process.exit(0); // Logout
+
+        if (menuChoice === 3) {
+          const articleId = readlineSync.questionInt("Enter Article ID to save: ");
+          const articleToSave = headlines.find((a: { article_id: number }) => a.article_id === articleId);
+          if (!articleToSave) {
+            console.log("Invalid Article ID. Please try again.");
+            continue;
+          }
+
+          try {
+            await saveArticle(user.user_id, articleId);
+            console.log("✅ Article saved successfully!");
+          } catch (err: any) {
+            if (err.response?.status === 409) {
+              console.log("⚠️  Article already saved.");
+            } else if (err.response?.status === 400) {
+              console.log("❌ Invalid request. Please check inputs.");
+            } else {
+              console.log("❌ Failed to save article:", err.message);
+            }
+          }
+        } else if (menuChoice === 4) {
+          const articleId = readlineSync.questionInt("Enter Article ID to like: ");
+          await likeArticle(user.user_id, articleId);
+          console.log("Article liked.");
+          // Refresh headlines to reflect updated like count
+          let refreshedRes = await fetchHeadlines({ startDate, endDate, category });
+          headlines = refreshedRes.data.headlines || [];
+        } else if (menuChoice === 5) {
+          const articleId = readlineSync.questionInt("Enter Article ID to dislike: ");
+          await dislikeArticle(user.user_id, articleId);
+          console.log("Article disliked.");
+          // Refresh headlines to reflect updated dislike count
+          let refreshedRes = await fetchHeadlines({ startDate, endDate, category });
+          headlines = refreshedRes.data.headlines || [];
+        } else if (menuChoice === 6) {
+          const articleId = readlineSync.questionInt("Enter Article ID to report: ");
+          const articleToReport = headlines.find((a: { article_id: number }) => a.article_id === articleId);
+          if (!articleToReport) {
+            console.log("Invalid Article ID. Please try again.");
+            continue;
+          }
+          const reason = readlineSync.question("Enter reason for reporting: ");
+          try {
+            await reportArticle(user.user_id, articleId, reason);
+            console.log("Article reported successfully!");
+            // Refresh headlines if you want to remove/re-render reported content depending on backend logic
+            let refreshedRes = await fetchHeadlines({ startDate, endDate, category });
+            headlines = refreshedRes.data.headlines || [];
+          } catch (err: any) {
+            if (err?.response?.data?.error) {
+              console.log("Failed to report article:", err.response.data.error);
+            } else {
+              console.log("Failed to report article:", err.message);
+            }
+          }
         } else {
           console.log("Invalid choice. Try again.");
         }

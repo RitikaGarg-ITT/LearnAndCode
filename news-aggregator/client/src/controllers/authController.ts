@@ -9,7 +9,7 @@ export async function signupFlow() {
   const password = readlineSync.question("Password: ", { hideEchoBack: true });
 
   try {
-    // No role sent here!
+
     const res = await signup({ firstname, lastname, email, password });
     console.log(JSON.stringify(res.data.message));
   } catch (err: any) {

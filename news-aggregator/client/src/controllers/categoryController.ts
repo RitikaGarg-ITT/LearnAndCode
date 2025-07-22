@@ -2,14 +2,14 @@ import readlineSync from "readline-sync";
 import { fetchCategories } from "../api/headlineApi";
 import { showCategoryMenu } from "../views/categoryView";
 
-// Returns the selected category string, or null if user selects "Back"
+
 export async function chooseCategoryMenu(): Promise<string | null> {
   let categories: string[];
   try {
     categories = await fetchCategories();
   } catch (err: any) {
     console.log("Could not fetch categories:", err.message);
-    return null; // or handle as needed
+    return null; 
   }
   if (!categories || !Array.isArray(categories)) {
     console.log("No categories available.");

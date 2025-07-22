@@ -1,6 +1,7 @@
 import readlineSync from "readline-sync";
 import { signupFlow, loginFlow } from "./controllers/authController";
 import { userMenuFlow } from "./controllers/userMenuController";
+import { AdminMenuController } from "./controllers/adminController";
 
 async function mainMenu() {
   while (true) {
@@ -15,7 +16,8 @@ async function mainMenu() {
         if (user.role === "user") {
           await userMenuFlow(user);
         } else if (user.role === "admin") {
-          // Implement adminMenuFlow(user);
+          const adminMenu = new AdminMenuController(user);
+          await adminMenu.adminMenuFlow();
         }
       }
     } else {

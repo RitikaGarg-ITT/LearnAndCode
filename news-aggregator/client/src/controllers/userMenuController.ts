@@ -2,7 +2,7 @@ import readlineSync from "readline-sync";
 import { showUserMenu } from "../views/userMenuView";
 import { headlinesMenuFlow } from "./headlineController";
 import { savedArticlesMenuFlow } from "./savedArticleController";
-import { searchMenuFlow } from "./searchController";
+ import { SearchController } from "./searchController";
 
 export async function userMenuFlow(user: any) {
   while (true) {
@@ -10,13 +10,14 @@ export async function userMenuFlow(user: any) {
     const choice = readlineSync.question("Enter your choice: ");
     switch (choice) {
       case "1":
-        await headlinesMenuFlow();
+        await headlinesMenuFlow(user);
         break;
       case "2":
-        savedArticlesMenuFlow(user);
+        await savedArticlesMenuFlow(user);
         break;
       case "3":
-        await searchMenuFlow(user);
+        const searchController = new SearchController(user);
+        await searchController.searchMenuFlow();
         break;
       case "4":
         // Implement showNotificationsMenu(user);
