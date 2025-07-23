@@ -28,3 +28,18 @@ export async function addServer({ name, api_uri, api_key }: { name: string; api_
     api_key,
   });
 }
+
+
+export async function toggleArticleVisibility(articleId: number, is_hidden: boolean) {
+  await new Promise((res) => setTimeout(res, 100));
+  return axios.put(`http://localhost:4000/api/admin/articles/${articleId}/visibility`, {
+    is_hidden,
+  });
+}
+
+export async function toggleCategoryVisibility(categoryId: number, is_hidden: boolean) {
+  await new Promise((res) => setTimeout(res, 100));
+  return axios.put(`http://localhost:4000/api/admin/categories/${categoryId}/visibility`, {
+    is_hidden,
+  });
+}

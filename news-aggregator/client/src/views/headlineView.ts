@@ -15,31 +15,39 @@ export function showHeadlinesMainMenu(user?: any) {
 }
 
 // Show dynamic category menu
-export function showCategoryMenu(categories: string[]) {
-  console.log("\nPlease choose a category:");
-  categories.forEach((cat, idx) => {
-    console.log(`${idx + 1}. ${capitalize(cat)}`);
-  });
-  console.log(`${categories.length + 1}. Back`);
-}
+// export function showCategoryMenu(categories: string[]) {
+//   console.log("\nPlease choose a category:");
+//   categories.forEach((cat, idx) => {
+//     console.log(`${idx + 1}. ${capitalize(cat)}`);
+//   });
+//   console.log(`${categories.length + 1}. Back`);
+// }
 
 // Show a list of headlines
 export function showHeadlinesList(headlines: any[]) {
   if (!headlines.length) {
     console.log("No headlines to display.");
     return;
+  } // Filter out hidden articles
+
+  const visibleHeadlines = headlines.filter((headline) => !headline.is_hidden || headline.is_hidden === 0);
+
+  if (!visibleHeadlines.length) {
+    console.log("No visible headlines to display.");
+    return;
   }
+
   console.log("\nH E A D L I N E S\n");
-  // console.log({headlines});
-  headlines.forEach((headline, idx) => {
+
+  visibleHeadlines.forEach((headline, idx) => {
     const articleId = headline.article_id || headline.id || idx + 1;
     const title = headline.title || "No Title";
     const description = headline.description || "";
     const source = headline.source?.name || headline.source || "Unknown";
     const url = headline.url || "";
     const category = headline.category || "General";
-    const likes = headline.likes ;
-    const dislikes = headline.dislikes ;
+    const likes = headline.likes;
+    const dislikes = headline.dislikes;
 
     console.log(`Article Id: ${articleId}`);
     console.log(`${title}`);
@@ -47,13 +55,17 @@ export function showHeadlinesList(headlines: any[]) {
     console.log(`source: ${source}`);
     if (url) console.log(`URL: ${url}`);
     console.log(`Business: ${category}`);
-    console.log(`Likes: ${likes}  Dislikes: ${dislikes}`);
+    console.log(`Likes: ${likes}  Dislikes: ${dislikes}`);
     console.log("------------------------------------------------------------");
   });
 }
 
-
 export function showHeadlineDetails(headline: any) {
+  if (headline.is_hidden === 1) {
+    console.log("🚫 This article has been hidden and cannot be viewed.");
+    return;
+  }
+
   console.log(`\nTitle: ${headline.title}`);
   console.log(`Description: ${headline.description}`);
   console.log(`Published At: ${headline.published_at}`);

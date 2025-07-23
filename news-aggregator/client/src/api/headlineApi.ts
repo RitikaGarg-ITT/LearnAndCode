@@ -9,6 +9,7 @@ export async function fetchCategories() {
       maxContentLength: Infinity,
       url: "http://localhost:4000/api/categories",
     });
+    console.log("categoriesssssssss : ", res.data)
     return res.data.categories; 
   } catch (err: any) {
     console.log("Error in fetchCategories:", err.message, err.code, err.response?.data);

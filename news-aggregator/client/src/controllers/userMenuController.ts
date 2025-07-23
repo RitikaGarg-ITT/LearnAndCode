@@ -2,7 +2,7 @@ import readlineSync from "readline-sync";
 import { showUserMenu } from "../views/userMenuView";
 import { headlinesMenuFlow } from "./headlineController";
 import { savedArticlesMenuFlow } from "./savedArticleController";
- import { SearchController } from "./searchController";
+import { SearchController } from "./searchController";
 
 export async function userMenuFlow(user: any) {
   while (true) {
