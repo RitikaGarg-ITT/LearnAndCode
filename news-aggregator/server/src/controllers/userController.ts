@@ -1,3 +1,4 @@
+// server/src/controllers/userController.ts
 import userService from "../services/userService";
 import { Request, Response } from "express";
 import logger from "../utils/logger";
@@ -6,26 +7,35 @@ class UserController {
   public static async signup(req: Request, res: Response): Promise<void> {
     try {
       const { firstname, lastname, email, password } = req.body;
+
       if (!firstname || !lastname || !email || !password) {
-        res.status(400).json({ message: "All fields required" });
-        return;
+         res.status(400).json({ message: "All fields required" });
+         return;
       }
+
       const userId = await userService.signup({ firstname, lastname, email, password });
       res.status(201).json({ message: "Signup successful", userId });
     } catch (err: any) {
-      logger.error(err);
-      res.status(400).json({ message: err.message });
+      logger.error(`Signup error for ${req.body?.email}: ${err.message}`);
+      if (err.message.includes("registered")) {
+        res.status(409).json({ message: err.message });
+      } else {
+        res.status(500).json({ message: err.message || "Internal Server Error" });
+      }
     }
   }
 
   public static async login(req: Request, res: Response): Promise<void> {
     try {
       const { email, password } = req.body;
+
       if (!email || !password) {
-        res.status(400).json({ message: "Email and password required" });
-        return;
+         res.status(400).json({ message: "Email and password required" });
+         return;
       }
+
       const user = await userService.login({ email, password });
+
       res.status(200).json({
         message: "Login successful",
         user: {
@@ -37,7 +47,12 @@ class UserController {
         },
       });
     } catch (err: any) {
-      res.status(400).json({ message: err.message });
+      logger.error(`Login error for ${req.body?.email}: ${err.message}`);
+      if (err.message.includes("Invalid") || err.message.includes("not found")) {
+        res.status(401).json({ message: err.message });
+      } else {
+        res.status(500).json({ message: "Internal Server Error" });
+      }
     }
   }
 }

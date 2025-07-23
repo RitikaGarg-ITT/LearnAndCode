@@ -46,7 +46,6 @@ export class AdminController {
       await db.query("INSERT INTO categories (name) VALUES (?)", [name]);
       res.json({ message: "Category added" });
     } catch (err: any) {
-      
       if (err.code === "ER_DUP_ENTRY") {
         return res.status(400).json({ error: "Category already exists" });
       }
@@ -67,6 +66,35 @@ export class AdminController {
         return res.status(400).json({ error: "External server already exists" });
       }
       logger.error("Error adding external server:", err);
+      res.status(500).json({ error: err.message || "Internal server error" });
+    }
+  }
+
+  static async toggleArticleVisibility(req: Request, res: Response) {
+    try {
+      const { articleId } = req.params;
+      const { is_hidden } = req.body;
+
+      await db.query("UPDATE articles SET is_hidden = ? WHERE article_id = ?", [is_hidden ? 1 : 0, articleId]);
+
+      res.json({ message: `Article ${is_hidden ? "hidden" : "unhidden"} successfully.` });
+      logger.info({ message: `Article ${is_hidden ? "hidden" : "unhidden"} successfully. articleID : ${articleId}` });
+    } catch (err: any) {
+      logger.error("Error toggling article visibility:", err);
+      res.status(500).json({ error: err.message || "Internal server error" });
+    }
+  }
+
+  static async toggleCategoryVisibility(req: Request, res: Response) {
+    try {
+      const { categoryId } = req.params;
+      const { is_hidden } = req.body;
+
+      await db.query("UPDATE categories SET is_hidden = ? WHERE category_id = ?", [is_hidden ? 1 : 0, categoryId]);
+
+      res.json({ message: `Category ${is_hidden ? "hidden" : "unhidden"} successfully.` });
+    } catch (err: any) {
+      logger.error("Error toggling category visibility:", err);
       res.status(500).json({ error: err.message || "Internal server error" });
     }
   }

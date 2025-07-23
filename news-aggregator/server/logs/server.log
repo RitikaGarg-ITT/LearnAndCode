@@ -104,3 +104,45 @@
 [2025-07-22T06:48:04.582Z] INFO: News fetching scheduler started.
 [2025-07-22T06:48:04.586Z] INFO: Notification scheduler started.
 [2025-07-22T06:48:04.590Z] INFO: Server running on port 4000
+[2025-07-23T04:59:44.958Z] INFO: News fetching scheduler started.
+[2025-07-23T04:59:44.962Z] INFO: Notification scheduler started.
+[2025-07-23T04:59:44.965Z] INFO: Server running on port 4000
+[2025-07-23T06:05:29.260Z] INFO: News fetching scheduler started.
+[2025-07-23T06:05:29.274Z] INFO: Notification scheduler started.
+[2025-07-23T06:05:29.281Z] INFO: Server running on port 4000
+[2025-07-23T06:06:18.906Z] INFO: News fetching scheduler started.
+[2025-07-23T06:06:18.909Z] INFO: Notification scheduler started.
+[2025-07-23T06:06:18.913Z] INFO: Server running on port 4000
+[2025-07-23T06:18:31.762Z] ERROR: Login error for admin@example.com: Invalid password
+[2025-07-23T06:19:15.091Z] INFO: News fetching scheduler started.
+[2025-07-23T06:19:15.095Z] INFO: Notification scheduler started.
+[2025-07-23T06:19:15.099Z] INFO: Server running on port 4000
+[2025-07-23T09:33:40.265Z] INFO: News fetching scheduler started.
+[2025-07-23T09:33:40.269Z] INFO: Notification scheduler started.
+[2025-07-23T09:33:40.272Z] INFO: Server running on port 4000
+[2025-07-23T09:34:06.846Z] ERROR: Login error for admin@example.com: Invalid password
+[2025-07-23T09:45:06.897Z] INFO: News fetching scheduler started.
+[2025-07-23T09:45:06.901Z] INFO: Notification scheduler started.
+[2025-07-23T09:45:06.906Z] INFO: Server running on port 4000
+[2025-07-23T09:45:44.795Z] INFO: Article hidden successfully.
+[2025-07-23T09:46:29.766Z] INFO: Article unhidden successfully.
+[2025-07-23T09:49:03.703Z] INFO: News fetching scheduler started.
+[2025-07-23T09:49:03.708Z] INFO: Notification scheduler started.
+[2025-07-23T09:49:03.711Z] INFO: Server running on port 4000
+[2025-07-23T09:49:27.572Z] INFO: News fetching scheduler started.
+[2025-07-23T09:49:27.575Z] INFO: Notification scheduler started.
+[2025-07-23T09:49:27.579Z] INFO: Server running on port 4000
+[2025-07-23T09:49:40.142Z] INFO: Article hidden successfully. articleID : 257
+[2025-07-23T10:15:37.353Z] INFO: Article hidden successfully. articleID : 257
+[2025-07-23T11:36:01.008Z] INFO: News fetching scheduler started.
+[2025-07-23T11:36:01.012Z] INFO: Notification scheduler started.
+[2025-07-23T11:36:01.015Z] INFO: Server running on port 4000
+[2025-07-23T11:36:53.166Z] INFO: Article 256 reported by user 8 for reason: "asai"
+[2025-07-23T11:38:41.581Z] INFO: Article hidden successfully. articleID : 256
+[2025-07-23T11:40:01.797Z] INFO: Article hidden successfully. articleID : 255
+[2025-07-23T12:41:08.314Z] INFO: News fetching scheduler started.
+[2025-07-23T12:41:08.318Z] INFO: Notification scheduler started.
+[2025-07-23T12:41:08.321Z] INFO: Server running on port 4000
+[2025-07-23T12:47:18.389Z] INFO: News fetching scheduler started.
+[2025-07-23T12:47:18.408Z] INFO: Notification scheduler started.
+[2025-07-23T12:47:18.421Z] INFO: Server running on port 4000

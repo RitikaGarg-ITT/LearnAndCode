@@ -1,7 +1,7 @@
 import { SearchController } from "../../src/controllers/searchController";
 import { AppError } from "../../src/exceptions/appError";
 
-// Mock the service modules
+
 jest.mock("../../src/services/userKeywordService", () => ({
   getUserKeywords: jest.fn(),
 }));
