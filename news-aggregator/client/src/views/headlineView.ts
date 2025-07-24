@@ -1,4 +1,3 @@
-// Show the main headlines menu (Today, Date range, Back)
 export function showHeadlinesMainMenu(user?: any) {
   const now = new Date();
   const date = now.toLocaleDateString();
@@ -14,21 +13,11 @@ export function showHeadlinesMainMenu(user?: any) {
   console.log("3. Back");
 }
 
-// Show dynamic category menu
-// export function showCategoryMenu(categories: string[]) {
-//   console.log("\nPlease choose a category:");
-//   categories.forEach((cat, idx) => {
-//     console.log(`${idx + 1}. ${capitalize(cat)}`);
-//   });
-//   console.log(`${categories.length + 1}. Back`);
-// }
-
-// Show a list of headlines
 export function showHeadlinesList(headlines: any[]) {
   if (!headlines.length) {
     console.log("No headlines to display.");
     return;
-  } // Filter out hidden articles
+  }
 
   const visibleHeadlines = headlines.filter((headline) => !headline.is_hidden || headline.is_hidden === 0);
 
@@ -45,7 +34,6 @@ export function showHeadlinesList(headlines: any[]) {
     const description = headline.description || "";
     const source = headline.source?.name || headline.source || "Unknown";
     const url = headline.url || "";
-    const category = headline.category || "General";
     const likes = headline.likes;
     const dislikes = headline.dislikes;
 
@@ -54,7 +42,6 @@ export function showHeadlinesList(headlines: any[]) {
     if (description) console.log(`${description}`);
     console.log(`source: ${source}`);
     if (url) console.log(`URL: ${url}`);
-    console.log(`Business: ${category}`);
     console.log(`Likes: ${likes}  Dislikes: ${dislikes}`);
     console.log("------------------------------------------------------------");
   });
@@ -70,8 +57,4 @@ export function showHeadlineDetails(headline: any) {
   console.log(`Description: ${headline.description}`);
   console.log(`Published At: ${headline.published_at}`);
   console.log(`URL: ${headline.url}\n`);
-}
-
-function capitalize(str: string) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
 }

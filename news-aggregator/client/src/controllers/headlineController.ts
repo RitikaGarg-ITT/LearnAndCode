@@ -10,7 +10,7 @@ export async function headlinesMenuFlow(user: any) {
   while (true) {
     showHeadlinesMainMenu(user);
     const mainChoiceNum = readlineSync.questionInt("Enter your choice: ");
-    if (mainChoiceNum === 3) break; // Exit headlines menu
+    if (mainChoiceNum === 3) break;
 
     let startDate, endDate;
     if (mainChoiceNum === 1) {
@@ -35,7 +35,6 @@ export async function headlinesMenuFlow(user: any) {
         continue;
       }
 
-      // --- HEADLINES LIST MENU ---
       while (true) {
         showHeadlinesList(headlines);
         console.log("1. Back");
@@ -46,8 +45,8 @@ export async function headlinesMenuFlow(user: any) {
         console.log("6. Report Article");
         const menuChoice = readlineSync.questionInt("Enter your choice: ");
 
-        if (menuChoice === 1) break; // Back to previous menu
-        if (menuChoice === 2) process.exit(0); // Logout
+        if (menuChoice === 1) break;
+        if (menuChoice === 2) process.exit(0);
 
         if (menuChoice === 3) {
           const articleId = readlineSync.questionInt("Enter Article ID to save: ");
@@ -73,14 +72,12 @@ export async function headlinesMenuFlow(user: any) {
           const articleId = readlineSync.questionInt("Enter Article ID to like: ");
           await likeArticle(user.user_id, articleId);
           console.log("Article liked.");
-          // Refresh headlines to reflect updated like count
           let refreshedRes = await fetchHeadlines({ startDate, endDate, category });
           headlines = refreshedRes.data.headlines || [];
         } else if (menuChoice === 5) {
           const articleId = readlineSync.questionInt("Enter Article ID to dislike: ");
           await dislikeArticle(user.user_id, articleId);
           console.log("Article disliked.");
-          // Refresh headlines to reflect updated dislike count
           let refreshedRes = await fetchHeadlines({ startDate, endDate, category });
           headlines = refreshedRes.data.headlines || [];
         } else if (menuChoice === 6) {
@@ -94,7 +91,6 @@ export async function headlinesMenuFlow(user: any) {
           try {
             await reportArticle(user.user_id, articleId, reason);
             console.log("Article reported successfully!");
-            // Refresh headlines if you want to remove/re-render reported content depending on backend logic
             let refreshedRes = await fetchHeadlines({ startDate, endDate, category });
             headlines = refreshedRes.data.headlines || [];
           } catch (err: any) {

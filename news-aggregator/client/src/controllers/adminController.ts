@@ -6,21 +6,24 @@ import {
   addCategory,
   toggleArticleVisibility,
   toggleCategoryVisibility,
+  fetchBlockedKeywords,
+  blockKeyword,
+  unblockKeyword,
 } from "../api/adminApi";
+
+import {
+  showAdminMainMenu,
+  showBlockedKeywordsMenu,
+  showBlockedKeywordsList,
+  showInvalidChoice,
+} from "../views/adminView";
 
 export class AdminMenuController {
   constructor(private user: any) {}
 
   async adminMenuFlow() {
     while (true) {
-      console.log(`\nWelcome to the News Aggregator Admin Panel, ${this?.user?.firstname}!`);
-      console.log("1. View list of external servers and status");
-      console.log("2. View the external server’s details");
-      console.log("3. Update/Edit the external server’s details");
-      console.log("4. Add new News Category");
-      console.log("5. Toggle Article visibility");
-      console.log("6. Toggle Category visibility");
-      console.log("7. Logout");
+      showAdminMainMenu(this.user.firstname);
 
       const choice = readlineSync.questionInt("Enter your choice: ");
 
@@ -39,7 +42,6 @@ export class AdminMenuController {
           console.log("Failed to fetch servers:", err?.response?.data?.error || err.message);
         }
       } else if (choice === 2) {
-        // 2. View external server details
         const id = readlineSync.questionInt("Enter external server ID: ");
         try {
           const res = await fetchExternalServerDetails(id);
@@ -53,7 +55,6 @@ export class AdminMenuController {
           console.log("Failed to fetch server details:", err?.response?.data?.error || err.message);
         }
       } else if (choice === 3) {
-        // 3. Update/Edit external server details
         const id = readlineSync.questionInt("Enter external server ID: ");
         const apiKey = readlineSync.question("Enter updated API key: ");
         try {
@@ -63,7 +64,6 @@ export class AdminMenuController {
           console.log("Failed to update API key:", err?.response?.data?.error || err.message);
         }
       } else if (choice === 4) {
-        // 4. Add new News Category
         const name = readlineSync.question("Enter new category name: ");
         try {
           await addCategory(name);
@@ -83,7 +83,6 @@ export class AdminMenuController {
       } else if (choice === 6) {
         const categoryId = readlineSync.questionInt("Enter Category ID to modify: ");
         const shouldHide = readlineSync.keyInYNStrict("Do you want to hide this category?");
-
         try {
           await toggleCategoryVisibility(categoryId, shouldHide);
           console.log(`✅ Category ${shouldHide ? "hidden" : "unhidden"} successfully.`);
@@ -91,10 +90,50 @@ export class AdminMenuController {
           console.error("❌ Failed:", err?.response?.data?.error || err.message);
         }
       } else if (choice === 7) {
+        await this.blockedKeywordsSubMenu();
+      } else if (choice === 8) {
         console.log("Logging out...");
         break;
       } else {
-        console.log("Invalid choice. Please try again.");
+        showInvalidChoice();
+      }
+    }
+  }
+
+  private async blockedKeywordsSubMenu() {
+    while (true) {
+      showBlockedKeywordsMenu();
+
+      const keywordChoice = readlineSync.questionInt("Choose an option: ");
+
+      if (keywordChoice === 1) {
+        try {
+          const res = await fetchBlockedKeywords();
+          const keywords = res.data.keywords;
+          showBlockedKeywordsList(keywords);
+        } catch (err: any) {
+          console.log("Failed to fetch blocked keywords:", err?.response?.data?.message || err.message);
+        }
+      } else if (keywordChoice === 2) {
+        const keyword = readlineSync.question("Enter keyword to block: ");
+        try {
+          const res = await blockKeyword(keyword);
+          console.log(res.data.message);
+        } catch (err: any) {
+          console.log("❌ Failed to block keyword:", err?.response?.data?.message || err.message);
+        }
+      } else if (keywordChoice === 3) {
+        const keyword = readlineSync.question("Enter keyword to unblock: ");
+        try {
+          const res = await unblockKeyword(keyword);
+          console.log(res.data.message);
+        } catch (err: any) {
+          console.log("❌ Failed to unblock keyword:", err?.response?.data?.message || err.message);
+        }
+      } else if (keywordChoice === 4) {
+        break;
+      } else {
+        showInvalidChoice();
       }
     }
   }

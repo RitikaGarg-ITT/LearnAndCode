@@ -14,7 +14,6 @@ export class SearchController {
         const keyword = readlineSync.question("Enter search keyword: ");
         const res = await ArticleSearchApi.searchArticles(keyword);
         let articles = res.data.articles || [];
-        // Pass keyword as well so it can be used later
         const shouldContinue = await this.handleSearchResultsMenu(articles, keyword);
         if (!shouldContinue) break;
       } catch (err: any) {
@@ -24,7 +23,7 @@ export class SearchController {
   }
 
   private async handleSearchResultsMenu(articles: any[], keyword: string): Promise<boolean> {
-    let currentArticles = articles; // mutable, initially set to fetched list
+    let currentArticles = articles; 
     let filterStart = "";
     let filterEnd = "";
     let sortField = "";
@@ -76,10 +75,8 @@ export class SearchController {
           try {
             await likeArticle(this.user.user_id, articleId);
             console.log("Article liked successfully!");
-            // Refresh articles from the backend for up-to-date likes count
             const res = await ArticleSearchApi.searchArticles(keyword);
             articles = res.data.articles || [];
-            // Apply filter/sort if previously used
             currentArticles = applyFiltersAndSorting(articles, filterStart, filterEnd, sortField);
           } catch (err: any) {
             console.log("Failed to like article:", err?.response?.data?.error || err.message);
@@ -90,7 +87,6 @@ export class SearchController {
           try {
             await dislikeArticle(this.user.user_id, articleId);
             console.log("Article disliked successfully!");
-            // Refresh articles from the backend for up-to-date dislikes count
             const res = await ArticleSearchApi.searchArticles(keyword);
             articles = res.data.articles || [];
             currentArticles = applyFiltersAndSorting(articles, filterStart, filterEnd, sortField);
@@ -106,7 +102,6 @@ export class SearchController {
             await reportArticle(this.user.user_id, articleId, reason);
             console.log("Article reported successfully!");
           } catch (err: any) {
-            // Check for 'Duplicate entry' in MySQL error message
             const message = err?.response?.data?.error || err?.message || "";
             if (message.includes("Duplicate entry") && message.includes("unique_user_article")) {
               console.log("You have already reported this article.");
@@ -115,7 +110,7 @@ export class SearchController {
             }
           }
         } else if (choice === 7) {
-          return false; // Go back to previous menu
+          return false;
         } else if (choice === 8) {
           process.exit(0);
         } else {
@@ -128,7 +123,7 @@ export class SearchController {
   }
 }
 
-// Helper to apply filter/sort after refetch
+
 function applyFiltersAndSorting(articles: any[], filterStart: string, filterEnd: string, sortField: string): any[] {
   let result = articles;
   if (filterStart && filterEnd) {

@@ -1,4 +1,3 @@
-// client/src/flows/authFlow.ts
 import readlineSync from "readline-sync";
 import { signup, login } from "../api/userApi";
 
@@ -55,7 +54,6 @@ export async function loginFlow() {
     } else {
       console.error("Unexpected error:", err.message);
     }
-
     return null;
   }
 }

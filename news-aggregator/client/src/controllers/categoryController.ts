@@ -2,11 +2,10 @@ import readlineSync from "readline-sync";
 import { fetchCategories } from "../api/headlineApi";
 import { showCategoryMenu } from "../views/categoryView";
 
-// type for category
 type Category = { name: string; is_hidden?: number | boolean };
 
 export async function chooseCategoryMenu(): Promise<string | null> {
-  let categories: Category[]; // Fetch categories (objects now)
+  let categories: Category[]; 
 
   try {
     categories = await fetchCategories();
@@ -18,7 +17,7 @@ export async function chooseCategoryMenu(): Promise<string | null> {
   if (!categories || !Array.isArray(categories)) {
     console.log("No categories available.");
     return null;
-  } // Add 'all' as a visible string category at the beginning
+  } 
 
   const visibleCategories: (string | Category)[] = [
     "all",
@@ -28,9 +27,9 @@ export async function chooseCategoryMenu(): Promise<string | null> {
   while (true) {
     showCategoryMenu(visibleCategories);
     const choice = readlineSync.questionInt("Enter your choice: ");
-    if (choice === visibleCategories.length + 1) return null; // Back
+    if (choice === visibleCategories.length + 1) return null;
     if (choice >= 1 && choice <= visibleCategories.length) {
-      const selected = visibleCategories[choice - 1]; // Always return category name (string)
+      const selected = visibleCategories[choice - 1]; 
       return typeof selected === "string" ? selected : selected.name;
     }
     console.log("Invalid choice. Try again.");

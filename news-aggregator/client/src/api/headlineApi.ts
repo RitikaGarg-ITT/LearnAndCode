@@ -47,11 +47,11 @@ export async function fetchHeadlineById(id: number) {
   }
 }
 
-export async function searchHeadlines(query: string, startDate?: string, endDate?: string) {
-  let url = `http://localhost:4000/api/headlines/search?query=${encodeURIComponent(query)}`;
-  if (startDate && endDate) {
-    url += `&startDate=${startDate}&endDate=${endDate}`;
-  }
-  return axios.get(url);
-}
+// export async function searchHeadlines(query: string, startDate?: string, endDate?: string) {
+//   let url = `http://localhost:4000/api/headlines/search?query=${encodeURIComponent(query)}`;
+//   if (startDate && endDate) {
+//     url += `&startDate=${startDate}&endDate=${endDate}`;
+//   }
+//   return axios.get(url);
+// }
 

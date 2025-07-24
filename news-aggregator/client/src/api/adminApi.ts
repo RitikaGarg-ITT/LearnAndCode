@@ -29,7 +29,6 @@ export async function addServer({ name, api_uri, api_key }: { name: string; api_
   });
 }
 
-
 export async function toggleArticleVisibility(articleId: number, is_hidden: boolean) {
   await new Promise((res) => setTimeout(res, 100));
   return axios.put(`http://localhost:4000/api/admin/articles/${articleId}/visibility`, {
@@ -42,4 +41,19 @@ export async function toggleCategoryVisibility(categoryId: number, is_hidden: bo
   return axios.put(`http://localhost:4000/api/admin/categories/${categoryId}/visibility`, {
     is_hidden,
   });
+}
+
+export async function fetchBlockedKeywords() {
+  await new Promise((res) => setTimeout(res, 100));
+  return axios.get("http://localhost:4000/api/admin/keywords");
+}
+
+export async function blockKeyword(keyword: string) {
+  await new Promise((res) => setTimeout(res, 100));
+  return axios.post("http://localhost:4000/api/admin/keywords", { keyword });
+}
+
+export async function unblockKeyword(keyword: string) {
+  await new Promise((res) => setTimeout(res, 100));
+  return axios.delete(`http://localhost:4000/api/admin/keywords/${keyword}`);
 }
