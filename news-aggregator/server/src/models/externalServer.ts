@@ -1,4 +1,3 @@
-// server/src/models/ExternalServer.ts
 export interface ExternalServer {
   id: number;
   name: string;

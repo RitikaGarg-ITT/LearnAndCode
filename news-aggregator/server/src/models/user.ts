@@ -1,4 +1,4 @@
-export type UserRole = "admin" | "user" | "editor" | string; // Adjust roles as needed
+export type UserRole = "admin" | "user" | "editor" | string; 
 
 export default class User {
   public user_id: number | null;

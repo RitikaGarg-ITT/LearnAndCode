@@ -146,3 +146,58 @@
 [2025-07-23T12:47:18.389Z] INFO: News fetching scheduler started.
 [2025-07-23T12:47:18.408Z] INFO: Notification scheduler started.
 [2025-07-23T12:47:18.421Z] INFO: Server running on port 4000
+[2025-07-23T14:24:24.494Z] INFO: News fetching scheduler started.
+[2025-07-23T14:24:24.498Z] INFO: Notification scheduler started.
+[2025-07-23T14:24:24.501Z] INFO: Server running on port 4000
+[2025-07-23T14:51:44.342Z] INFO: News fetching scheduler started.
+[2025-07-23T14:51:44.345Z] INFO: Notification scheduler started.
+[2025-07-23T14:51:44.348Z] INFO: Server running on port 4000
+[2025-07-23T14:54:33.179Z] INFO: News fetching scheduler started.
+[2025-07-23T14:54:33.182Z] INFO: Notification scheduler started.
+[2025-07-23T14:54:33.187Z] INFO: Server running on port 4000
+[2025-07-23T14:54:42.455Z] INFO: News fetching scheduler started.
+[2025-07-23T14:54:42.459Z] INFO: Notification scheduler started.
+[2025-07-23T14:54:42.462Z] INFO: Server running on port 4000
+[2025-07-23T14:56:36.220Z] INFO: News fetching scheduler started.
+[2025-07-23T14:56:36.224Z] INFO: Notification scheduler started.
+[2025-07-23T14:56:36.227Z] INFO: Server running on port 4000
+[2025-07-23T14:57:29.782Z] INFO: News fetching scheduler started.
+[2025-07-23T14:57:29.786Z] INFO: Notification scheduler started.
+[2025-07-23T14:57:29.789Z] INFO: Server running on port 4000
+[2025-07-23T18:30:00.021Z] INFO: Starting scheduled news fetch...
+[2025-07-23T18:30:00.073Z] INFO: Fetching news from server [server 1], category [business]...
+[2025-07-23T18:30:00.724Z] INFO: Error fetching from server 1 [business]:
+[2025-07-23T18:30:00.725Z] INFO: Fetching news from server [server 1], category [general]...
+[2025-07-23T18:30:01.107Z] INFO: Error fetching from server 1 [general]:
+[2025-07-23T18:30:01.108Z] INFO: Fetching news from server [server 1], category [politics]...
+[2025-07-23T18:30:01.507Z] INFO: Error fetching from server 1 [politics]:
+[2025-07-23T18:30:01.507Z] INFO: Fetching news from server [server 1], category [Science]...
+[2025-07-23T18:30:01.914Z] INFO: Error fetching from server 1 [Science]:
+[2025-07-23T18:30:01.914Z] INFO: Fetching news from server [server 1], category [history]...
+[2025-07-23T18:30:02.339Z] INFO: Fetched 0 articles from server 1 [history]
+[2025-07-23T18:30:02.340Z] INFO: Fetching news from server [server 1], category [neurology]...
+[2025-07-23T18:30:02.730Z] INFO: Fetched 0 articles from server 1 [neurology]
+[2025-07-23T18:30:02.730Z] INFO: Fetching news from server [server 1], category [test]...
+[2025-07-23T18:30:03.143Z] INFO: Fetched 0 articles from server 1 [test]
+[2025-07-23T18:30:03.144Z] INFO: News fetch completed
+[2025-07-23T18:55:21.678Z] INFO: News fetching scheduler started.
+[2025-07-23T18:55:21.683Z] INFO: Notification scheduler started.
+[2025-07-23T18:55:21.687Z] INFO: Server running on port 4000
+[2025-07-23T19:13:53.401Z] INFO: News fetching scheduler started.
+[2025-07-23T19:13:53.405Z] INFO: Notification scheduler started.
+[2025-07-23T19:13:53.413Z] INFO: Server running on port 4000
+[2025-07-23T19:18:30.452Z] INFO: News fetching scheduler started.
+[2025-07-23T19:18:30.459Z] INFO: Notification scheduler started.
+[2025-07-23T19:18:30.464Z] INFO: Server running on port 4000
+[2025-07-23T19:24:25.468Z] INFO: News fetching scheduler started.
+[2025-07-23T19:24:25.472Z] INFO: Notification scheduler started.
+[2025-07-23T19:24:25.479Z] INFO: Server running on port 4000
+[2025-07-24T05:41:29.523Z] INFO: News fetching scheduler started.
+[2025-07-24T05:41:29.526Z] INFO: Notification scheduler started.
+[2025-07-24T05:41:29.533Z] INFO: Server running on port 4000
+[2025-07-24T05:42:27.499Z] ERROR: Login error for rits@gmail.com: Invalid password
+[2025-07-24T05:49:39.009Z] INFO: News fetching scheduler started.
+[2025-07-24T05:49:39.013Z] INFO: Notification scheduler started.
+[2025-07-24T05:49:39.016Z] INFO: Server running on port 4000
+[2025-07-24T05:58:56.375Z] ERROR: Login error for bhavin@gmail.com: User not found
+[2025-07-24T06:01:13.161Z] INFO: Article 234 reported by user 10 for reason: "asai"

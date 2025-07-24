@@ -1,4 +1,3 @@
-// models/savedArticle.ts
 export interface SavedArticle {
   saved_id: number;
   article_id: number;
@@ -8,5 +7,4 @@ export interface SavedArticle {
   url: string;
   category: string;
   published_at: string;
-  // ...any other article fields
 }

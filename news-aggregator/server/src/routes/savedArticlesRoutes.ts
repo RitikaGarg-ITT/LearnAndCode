@@ -1,4 +1,3 @@
-// routes/savedArticleRoutes.ts
 import { Router } from "express";
 import SavedArticleController from "../controllers/savedarticleController";
 const router = Router();

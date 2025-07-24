@@ -1,4 +1,3 @@
-// models/article.ts
 export interface Article {
   article_id: number;
   source_id: number;
@@ -11,5 +10,4 @@ export interface Article {
   published_at: string;
   likes?: number;
   dislikes?: number;
-  // add other fields as needed
 }

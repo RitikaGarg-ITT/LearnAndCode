@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { ExternalServerRepository } from "../repositories/ExternalServerRepository";
 import db from "../config/db";
 import logger from "../utils/logger";
+import { RowDataPacket } from "mysql2";
 
 export class AdminController {
   static async listExternalServers(req: any, res: any) {
@@ -96,6 +97,48 @@ export class AdminController {
     } catch (err: any) {
       logger.error("Error toggling category visibility:", err);
       res.status(500).json({ error: err.message || "Internal server error" });
+    }
+  }
+
+
+  static async addBlockedKeyword(req: any, res: any) {
+    const { keyword } = req.body;
+    if (!keyword || typeof keyword !== "string") {
+      return res.status(400).json({ message: "Keyword must be a string." });
+    }
+
+    try {
+      await db.query("INSERT INTO blocked_keywords (keyword) VALUES (?)", [keyword]);
+      res.json({ message: `Keyword "${keyword}" blocked.` });
+    } catch (err: any) {
+      if (err.code === "ER_DUP_ENTRY") {
+        return res.status(409).json({ message: "Keyword already blocked." });
+      }
+      res.status(500).json({ message: err.message });
+    }
+  }
+
+
+  static async removeBlockedKeyword(req: any, res: any) {
+    const { keyword } = req.params;
+    try {
+      const [result]: any = await db.query("DELETE FROM blocked_keywords WHERE keyword = ?", [keyword]);
+      if (result.affectedRows === 0) {
+        return res.status(404).json({ message: "Keyword not found." });
+      }
+      res.json({ message: `Keyword "${keyword}" unblocked.` });
+    } catch (err: any) {
+      res.status(500).json({ message: err.message });
+    }
+  }
+
+ 
+  static async listBlockedKeywords(req: any, res: any) {
+    try {
+      const [rows] = await db.query<RowDataPacket[]>("SELECT keyword FROM blocked_keywords");
+      res.json({ keywords: rows.map((r: any) => r.keyword) });
+    } catch (err: any) {
+      res.status(500).json({ message: err.message });
     }
   }
 }

@@ -32,8 +32,8 @@ app.use("/api/admin", adminRoutes);
 
 NewsFetcherScheduler.start();
 logger.info("News fetching scheduler started.");
-NotificationScheduler.start();
-logger.info("Notification scheduler started.");
+// NotificationScheduler.start();
+// logger.info("Notification scheduler started.");
 
 const PORT = process.env.PORT ? Number(process.env.PORT) : 4000;
 app.listen(PORT, () => {
