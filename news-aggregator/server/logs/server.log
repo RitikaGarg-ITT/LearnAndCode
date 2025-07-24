@@ -1,0 +1,203 @@
+[2025-07-22T05:41:46.413Z] INFO: News fetching scheduler started.
+[2025-07-22T05:41:46.418Z] INFO: Notification scheduler started.
+[2025-07-22T05:41:46.422Z] INFO: Server running on port 4000
+[2025-07-22T05:49:43.706Z] INFO: News fetching scheduler started.
+[2025-07-22T05:49:43.710Z] INFO: Notification scheduler started.
+[2025-07-22T05:49:43.713Z] INFO: Server running on port 4000
+[2025-07-22T05:50:08.310Z] INFO: News fetching scheduler started.
+[2025-07-22T05:50:08.314Z] INFO: Notification scheduler started.
+[2025-07-22T05:50:08.317Z] INFO: Server running on port 4000
+[2025-07-22T05:52:18.295Z] INFO: News fetching scheduler started.
+[2025-07-22T05:52:18.299Z] INFO: Notification scheduler started.
+[2025-07-22T05:52:18.302Z] INFO: Server running on port 4000
+[2025-07-22T05:54:45.033Z] INFO: News fetching scheduler started.
+[2025-07-22T05:54:45.037Z] INFO: Notification scheduler started.
+[2025-07-22T05:54:45.041Z] INFO: Server running on port 4000
+[2025-07-22T05:54:55.066Z] INFO: News fetching scheduler started.
+[2025-07-22T05:54:55.071Z] INFO: Notification scheduler started.
+[2025-07-22T05:54:55.075Z] INFO: Server running on port 4000
+[2025-07-22T05:58:43.621Z] INFO: News fetching scheduler started.
+[2025-07-22T05:58:43.625Z] INFO: Notification scheduler started.
+[2025-07-22T05:58:43.628Z] INFO: Server running on port 4000
+[2025-07-22T05:58:51.123Z] INFO: News fetching scheduler started.
+[2025-07-22T05:58:51.127Z] INFO: Notification scheduler started.
+[2025-07-22T05:58:51.133Z] INFO: Server running on port 4000
+[2025-07-22T05:58:58.423Z] INFO: News fetching scheduler started.
+[2025-07-22T05:58:58.427Z] INFO: Notification scheduler started.
+[2025-07-22T05:58:58.431Z] INFO: Server running on port 4000
+[2025-07-22T05:59:07.953Z] INFO: News fetching scheduler started.
+[2025-07-22T05:59:07.957Z] INFO: Notification scheduler started.
+[2025-07-22T05:59:07.960Z] INFO: Server running on port 4000
+[2025-07-22T06:07:55.436Z] ERROR: Error reporting article 416 by user 8: Duplicate entry '416-8' for key 'article_reports.unique_user_article'
+[2025-07-22T06:10:45.172Z] INFO: News fetching scheduler started.
+[2025-07-22T06:10:45.176Z] INFO: Notification scheduler started.
+[2025-07-22T06:10:45.179Z] INFO: Server running on port 4000
+[2025-07-22T06:13:08.233Z] INFO: News fetching scheduler started.
+[2025-07-22T06:13:08.237Z] INFO: Notification scheduler started.
+[2025-07-22T06:13:08.241Z] INFO: Server running on port 4000
+[2025-07-22T06:13:25.994Z] INFO: News fetching scheduler started.
+[2025-07-22T06:13:25.997Z] INFO: Notification scheduler started.
+[2025-07-22T06:13:26.000Z] INFO: Server running on port 4000
+[2025-07-22T06:14:41.834Z] INFO: News fetching scheduler started.
+[2025-07-22T06:14:41.839Z] INFO: Notification scheduler started.
+[2025-07-22T06:14:41.842Z] INFO: Server running on port 4000
+[2025-07-22T06:14:49.529Z] INFO: News fetching scheduler started.
+[2025-07-22T06:14:49.533Z] INFO: Notification scheduler started.
+[2025-07-22T06:14:49.539Z] INFO: Server running on port 4000
+[2025-07-22T06:14:55.309Z] INFO: News fetching scheduler started.
+[2025-07-22T06:14:55.313Z] INFO: Notification scheduler started.
+[2025-07-22T06:14:55.315Z] INFO: Server running on port 4000
+[2025-07-22T06:15:12.565Z] INFO: News fetching scheduler started.
+[2025-07-22T06:15:12.569Z] INFO: Notification scheduler started.
+[2025-07-22T06:15:12.573Z] INFO: Server running on port 4000
+[2025-07-22T06:15:24.966Z] INFO: News fetching scheduler started.
+[2025-07-22T06:15:24.970Z] INFO: Notification scheduler started.
+[2025-07-22T06:15:24.973Z] INFO: Server running on port 4000
+[2025-07-22T06:16:39.873Z] INFO: News fetching scheduler started.
+[2025-07-22T06:16:39.877Z] INFO: Notification scheduler started.
+[2025-07-22T06:16:39.880Z] INFO: Server running on port 4000
+[2025-07-22T06:16:49.360Z] INFO: News fetching scheduler started.
+[2025-07-22T06:16:49.363Z] INFO: Notification scheduler started.
+[2025-07-22T06:16:49.367Z] INFO: Server running on port 4000
+[2025-07-22T06:17:12.701Z] INFO: News fetching scheduler started.
+[2025-07-22T06:17:12.705Z] INFO: Notification scheduler started.
+[2025-07-22T06:17:12.708Z] INFO: Server running on port 4000
+[2025-07-22T06:18:40.618Z] INFO: News fetching scheduler started.
+[2025-07-22T06:18:40.622Z] INFO: Notification scheduler started.
+[2025-07-22T06:18:40.625Z] INFO: Server running on port 4000
+[2025-07-22T06:18:50.496Z] INFO: News fetching scheduler started.
+[2025-07-22T06:18:50.499Z] INFO: Notification scheduler started.
+[2025-07-22T06:18:50.502Z] INFO: Server running on port 4000
+[2025-07-22T06:19:03.374Z] INFO: News fetching scheduler started.
+[2025-07-22T06:19:03.379Z] INFO: Notification scheduler started.
+[2025-07-22T06:19:03.383Z] INFO: Server running on port 4000
+[2025-07-22T06:39:58.549Z] INFO: News fetching scheduler started.
+[2025-07-22T06:39:58.553Z] INFO: Notification scheduler started.
+[2025-07-22T06:39:58.556Z] INFO: Server running on port 4000
+[2025-07-22T06:40:07.738Z] INFO: News fetching scheduler started.
+[2025-07-22T06:40:07.743Z] INFO: Notification scheduler started.
+[2025-07-22T06:40:07.746Z] INFO: Server running on port 4000
+[2025-07-22T06:40:21.146Z] INFO: News fetching scheduler started.
+[2025-07-22T06:40:21.150Z] INFO: Notification scheduler started.
+[2025-07-22T06:40:21.153Z] INFO: Server running on port 4000
+[2025-07-22T06:40:39.283Z] INFO: News fetching scheduler started.
+[2025-07-22T06:40:39.287Z] INFO: Notification scheduler started.
+[2025-07-22T06:40:39.290Z] INFO: Server running on port 4000
+[2025-07-22T06:40:46.686Z] INFO: News fetching scheduler started.
+[2025-07-22T06:40:46.690Z] INFO: Notification scheduler started.
+[2025-07-22T06:40:46.696Z] INFO: Server running on port 4000
+[2025-07-22T06:41:00.738Z] INFO: News fetching scheduler started.
+[2025-07-22T06:41:00.744Z] INFO: Notification scheduler started.
+[2025-07-22T06:41:00.749Z] INFO: Server running on port 4000
+[2025-07-22T06:41:19.572Z] INFO: News fetching scheduler started.
+[2025-07-22T06:41:19.578Z] INFO: Notification scheduler started.
+[2025-07-22T06:41:19.581Z] INFO: Server running on port 4000
+[2025-07-22T06:42:55.224Z] INFO: News fetching scheduler started.
+[2025-07-22T06:42:55.227Z] INFO: Notification scheduler started.
+[2025-07-22T06:42:55.231Z] INFO: Server running on port 4000
+[2025-07-22T06:47:27.998Z] INFO: News fetching scheduler started.
+[2025-07-22T06:47:28.004Z] INFO: Notification scheduler started.
+[2025-07-22T06:47:28.010Z] INFO: Server running on port 4000
+[2025-07-22T06:47:38.159Z] INFO: News fetching scheduler started.
+[2025-07-22T06:47:38.163Z] INFO: Notification scheduler started.
+[2025-07-22T06:47:38.170Z] INFO: Server running on port 4000
+[2025-07-22T06:48:04.582Z] INFO: News fetching scheduler started.
+[2025-07-22T06:48:04.586Z] INFO: Notification scheduler started.
+[2025-07-22T06:48:04.590Z] INFO: Server running on port 4000
+[2025-07-23T04:59:44.958Z] INFO: News fetching scheduler started.
+[2025-07-23T04:59:44.962Z] INFO: Notification scheduler started.
+[2025-07-23T04:59:44.965Z] INFO: Server running on port 4000
+[2025-07-23T06:05:29.260Z] INFO: News fetching scheduler started.
+[2025-07-23T06:05:29.274Z] INFO: Notification scheduler started.
+[2025-07-23T06:05:29.281Z] INFO: Server running on port 4000
+[2025-07-23T06:06:18.906Z] INFO: News fetching scheduler started.
+[2025-07-23T06:06:18.909Z] INFO: Notification scheduler started.
+[2025-07-23T06:06:18.913Z] INFO: Server running on port 4000
+[2025-07-23T06:18:31.762Z] ERROR: Login error for admin@example.com: Invalid password
+[2025-07-23T06:19:15.091Z] INFO: News fetching scheduler started.
+[2025-07-23T06:19:15.095Z] INFO: Notification scheduler started.
+[2025-07-23T06:19:15.099Z] INFO: Server running on port 4000
+[2025-07-23T09:33:40.265Z] INFO: News fetching scheduler started.
+[2025-07-23T09:33:40.269Z] INFO: Notification scheduler started.
+[2025-07-23T09:33:40.272Z] INFO: Server running on port 4000
+[2025-07-23T09:34:06.846Z] ERROR: Login error for admin@example.com: Invalid password
+[2025-07-23T09:45:06.897Z] INFO: News fetching scheduler started.
+[2025-07-23T09:45:06.901Z] INFO: Notification scheduler started.
+[2025-07-23T09:45:06.906Z] INFO: Server running on port 4000
+[2025-07-23T09:45:44.795Z] INFO: Article hidden successfully.
+[2025-07-23T09:46:29.766Z] INFO: Article unhidden successfully.
+[2025-07-23T09:49:03.703Z] INFO: News fetching scheduler started.
+[2025-07-23T09:49:03.708Z] INFO: Notification scheduler started.
+[2025-07-23T09:49:03.711Z] INFO: Server running on port 4000
+[2025-07-23T09:49:27.572Z] INFO: News fetching scheduler started.
+[2025-07-23T09:49:27.575Z] INFO: Notification scheduler started.
+[2025-07-23T09:49:27.579Z] INFO: Server running on port 4000
+[2025-07-23T09:49:40.142Z] INFO: Article hidden successfully. articleID : 257
+[2025-07-23T10:15:37.353Z] INFO: Article hidden successfully. articleID : 257
+[2025-07-23T11:36:01.008Z] INFO: News fetching scheduler started.
+[2025-07-23T11:36:01.012Z] INFO: Notification scheduler started.
+[2025-07-23T11:36:01.015Z] INFO: Server running on port 4000
+[2025-07-23T11:36:53.166Z] INFO: Article 256 reported by user 8 for reason: "asai"
+[2025-07-23T11:38:41.581Z] INFO: Article hidden successfully. articleID : 256
+[2025-07-23T11:40:01.797Z] INFO: Article hidden successfully. articleID : 255
+[2025-07-23T12:41:08.314Z] INFO: News fetching scheduler started.
+[2025-07-23T12:41:08.318Z] INFO: Notification scheduler started.
+[2025-07-23T12:41:08.321Z] INFO: Server running on port 4000
+[2025-07-23T12:47:18.389Z] INFO: News fetching scheduler started.
+[2025-07-23T12:47:18.408Z] INFO: Notification scheduler started.
+[2025-07-23T12:47:18.421Z] INFO: Server running on port 4000
+[2025-07-23T14:24:24.494Z] INFO: News fetching scheduler started.
+[2025-07-23T14:24:24.498Z] INFO: Notification scheduler started.
+[2025-07-23T14:24:24.501Z] INFO: Server running on port 4000
+[2025-07-23T14:51:44.342Z] INFO: News fetching scheduler started.
+[2025-07-23T14:51:44.345Z] INFO: Notification scheduler started.
+[2025-07-23T14:51:44.348Z] INFO: Server running on port 4000
+[2025-07-23T14:54:33.179Z] INFO: News fetching scheduler started.
+[2025-07-23T14:54:33.182Z] INFO: Notification scheduler started.
+[2025-07-23T14:54:33.187Z] INFO: Server running on port 4000
+[2025-07-23T14:54:42.455Z] INFO: News fetching scheduler started.
+[2025-07-23T14:54:42.459Z] INFO: Notification scheduler started.
+[2025-07-23T14:54:42.462Z] INFO: Server running on port 4000
+[2025-07-23T14:56:36.220Z] INFO: News fetching scheduler started.
+[2025-07-23T14:56:36.224Z] INFO: Notification scheduler started.
+[2025-07-23T14:56:36.227Z] INFO: Server running on port 4000
+[2025-07-23T14:57:29.782Z] INFO: News fetching scheduler started.
+[2025-07-23T14:57:29.786Z] INFO: Notification scheduler started.
+[2025-07-23T14:57:29.789Z] INFO: Server running on port 4000
+[2025-07-23T18:30:00.021Z] INFO: Starting scheduled news fetch...
+[2025-07-23T18:30:00.073Z] INFO: Fetching news from server [server 1], category [business]...
+[2025-07-23T18:30:00.724Z] INFO: Error fetching from server 1 [business]:
+[2025-07-23T18:30:00.725Z] INFO: Fetching news from server [server 1], category [general]...
+[2025-07-23T18:30:01.107Z] INFO: Error fetching from server 1 [general]:
+[2025-07-23T18:30:01.108Z] INFO: Fetching news from server [server 1], category [politics]...
+[2025-07-23T18:30:01.507Z] INFO: Error fetching from server 1 [politics]:
+[2025-07-23T18:30:01.507Z] INFO: Fetching news from server [server 1], category [Science]...
+[2025-07-23T18:30:01.914Z] INFO: Error fetching from server 1 [Science]:
+[2025-07-23T18:30:01.914Z] INFO: Fetching news from server [server 1], category [history]...
+[2025-07-23T18:30:02.339Z] INFO: Fetched 0 articles from server 1 [history]
+[2025-07-23T18:30:02.340Z] INFO: Fetching news from server [server 1], category [neurology]...
+[2025-07-23T18:30:02.730Z] INFO: Fetched 0 articles from server 1 [neurology]
+[2025-07-23T18:30:02.730Z] INFO: Fetching news from server [server 1], category [test]...
+[2025-07-23T18:30:03.143Z] INFO: Fetched 0 articles from server 1 [test]
+[2025-07-23T18:30:03.144Z] INFO: News fetch completed
+[2025-07-23T18:55:21.678Z] INFO: News fetching scheduler started.
+[2025-07-23T18:55:21.683Z] INFO: Notification scheduler started.
+[2025-07-23T18:55:21.687Z] INFO: Server running on port 4000
+[2025-07-23T19:13:53.401Z] INFO: News fetching scheduler started.
+[2025-07-23T19:13:53.405Z] INFO: Notification scheduler started.
+[2025-07-23T19:13:53.413Z] INFO: Server running on port 4000
+[2025-07-23T19:18:30.452Z] INFO: News fetching scheduler started.
+[2025-07-23T19:18:30.459Z] INFO: Notification scheduler started.
+[2025-07-23T19:18:30.464Z] INFO: Server running on port 4000
+[2025-07-23T19:24:25.468Z] INFO: News fetching scheduler started.
+[2025-07-23T19:24:25.472Z] INFO: Notification scheduler started.
+[2025-07-23T19:24:25.479Z] INFO: Server running on port 4000
+[2025-07-24T05:41:29.523Z] INFO: News fetching scheduler started.
+[2025-07-24T05:41:29.526Z] INFO: Notification scheduler started.
+[2025-07-24T05:41:29.533Z] INFO: Server running on port 4000
+[2025-07-24T05:42:27.499Z] ERROR: Login error for rits@gmail.com: Invalid password
+[2025-07-24T05:49:39.009Z] INFO: News fetching scheduler started.
+[2025-07-24T05:49:39.013Z] INFO: Notification scheduler started.
+[2025-07-24T05:49:39.016Z] INFO: Server running on port 4000
+[2025-07-24T05:58:56.375Z] ERROR: Login error for bhavin@gmail.com: User not found
+[2025-07-24T06:01:13.161Z] INFO: Article 234 reported by user 10 for reason: "asai"
